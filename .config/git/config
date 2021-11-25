@@ -1,0 +1,9 @@
+[include]
+	path = ~/.config/git/common
+
+[user]
+	name = oliverdding
+	email = oliverdding@outlook.com
+	signingkey = FDD1CB5A5E14ED3E
+
+# vim:ft=ini

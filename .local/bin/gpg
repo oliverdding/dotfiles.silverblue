@@ -1,0 +1,3 @@
+#!/bin/sh
+
+/usr/bin/gpg --homedir "$XDG_DATA_HOME"/gnupg "$@"
