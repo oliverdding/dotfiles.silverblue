@@ -30,24 +30,26 @@ copy() {
 }
 
 echo -e "\n### copying files"
-copy "etc/docker/daemon.json"
 copy "etc/yum.repos.d/fedora.repo"
 copy "etc/yum.repos.d/fedora-modular.repo"
 copy "etc/yum.repos.d/fedora-updates.repo"
 copy "etc/yum.repos.d/fedora-updates-modular.repo"
 
 echo -e "\n### configuring flatpak"
-flatpak remote-delete flathub
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user config --set languages "en"
+flatpak --user override --env=LC_ALL=en_US.UTF-8
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak --user remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 
 echo -e "\n### installing packages"
 rpm-ostree refresh-md
 rpm-ostree install --idempotent git starship git-delta exa ripgrep neovim
 rpm-ostree install --idempotent go java-1.8.0-openjdk-devel rust cargo
+rpm-ostree install --idempotent gnome-extensions-app gnome-tweaks
 rpm-ostree install --idempotent wqy-microhei-fonts wqy-zenhei-fonts
 
 flatpak uninstall --delete-data org.fedoraproject.MediaWriter
-rpm-ostree override remove firefox
+rpm-ostree override remove firefox gnome-tour
 
 flatpak install -y --noninteractive --or-update flathub org.gnome.Calendar
 flatpak install -y --noninteractive --or-update flathub org.gnome.Evince
