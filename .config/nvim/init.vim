@@ -5,7 +5,7 @@ let g:is_posix = 1                                  " Assume shell for syntax hi
 " Settings for custom statusline.
 if !exists('g:vscode')
     let g:lightline = {
-        \ 'colorscheme': 'nord',
+        \ 'colorscheme': 'gruvbox',
     \ }
 endif
 
@@ -16,7 +16,7 @@ endif
 call plug#begin('~/.local/share/nvim/plugin/')
 
 if !exists('g:vscode')
-    Plug 'arcticicestudio/nord-vim'
+    Plug 'morhetz/gruvbox'
     Plug 'itchyny/lightline.vim'
 endif
 
@@ -26,7 +26,7 @@ call plug#end()
 
 " {{{ Vim options
 
-colorscheme nord                                    " Set color scheme
+colorscheme gruvbox                                 " Set color scheme
 
 set nocompatible                                    " Remove vi compatibility hacks.
 let mapleader = "\<Space>"                          " Set <Leader> to Spacebar.

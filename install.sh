@@ -79,11 +79,13 @@ link ".config/wgetrc"
 link ".local/bin/gdb"
 link ".local/bin/gpg"
 link ".local/bin/gpg" ".local/bin/gpg2"
-link ".local/bin/grep"
 link ".local/bin/ls"
 link ".local/bin/sbt"
 link ".local/bin/sqlite3"
 link ".local/bin/wget"
+link ".local/share/cargo/config"
+link ".local/share/gnupg/dirmngr.conf"
+link ".local/share/gnupg/gpg.conf"
 
 echo "############################"
 echo "configure others dotfiles..."
@@ -93,3 +95,4 @@ echo "installing vim-plug"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PlugInstall +qall
+
